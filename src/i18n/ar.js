@@ -1,0 +1,209 @@
+export default {
+  // Navigation
+  nav: {
+    home: 'الرئيسية',
+    men: 'الرجال',
+    women: 'النساء',
+    running: 'تشكيلة الجري',
+    deals: 'العروض',
+    products: 'المنتجات',
+    wishlist: 'المفضلة',
+    cart: 'السلة',
+    login: 'تسجيل الدخول',
+    logout: 'تسجيل الخروج',
+    account: 'حسابي',
+    search: 'البحث...',
+  },
+
+  // Hero Section
+  hero: {
+    badge: 'الإصدار الأحدث لعام 2026',
+    title_1: 'تخطى حدودك مع',
+    title_2: 'أسترو فانتوم X',
+    desc: 'اكتشف البعد الجديد للسرعة والراحة. صُمم حذاء فانتوم X بتقنية النانو ليوفر لك دعماً لا مثيل له أثناء الجري والتمارين القاسية.',
+    cta_shop: 'تسوق الآن',
+    cta_video: 'شاهد الفيديو',
+    stat_customers: 'عميل سعيد',
+    stat_branches: 'فرع حول العالم',
+    stat_rating: 'التقييم',
+    badge_weight: 'خفيف الوزن 240g',
+    badge_airflow: 'تهوية ديناميكية',
+  },
+
+  // Brands
+  brands: {
+    title: 'العلامات التجارية الموثوقة لدينا',
+  },
+
+  // Products
+  products: {
+    trending: 'الأكثر',
+    trending_accent: 'مبيعاً',
+    trending_sub: 'تشكيلتنا المختارة من أفضل الأحذية أداءً وتصميماً.',
+    view_all: 'عرض الكل',
+    view_all_mobile: 'عرض جميع المنتجات',
+    add_to_cart: 'أضف إلى السلة',
+    add_to_wishlist: 'أضف إلى المفضلة',
+    quick_view: 'معاينة سريعة',
+    out_of_stock: 'غير متوفر',
+    in_stock: 'متوفر',
+    select_size: 'اختر المقاس',
+    select_color: 'اختر اللون',
+    quantity: 'الكمية',
+    category: {
+      running: 'الجري السريع',
+      training: 'تمرين الأوزان',
+      lifestyle: 'أسلوب حياة',
+      basketball: 'كرة السلة',
+      football: 'كرة القدم',
+    },
+    badge: {
+      new: 'جديد',
+      sale: 'خصم',
+      hot: 'الأكثر طلباً',
+    },
+    sort: {
+      label: 'ترتيب حسب',
+      newest: 'الأحدث',
+      price_asc: 'السعر: الأرخص أولاً',
+      price_desc: 'السعر: الأغلى أولاً',
+      rating: 'التقييم',
+      popular: 'الأكثر مبيعاً',
+    },
+    filter: {
+      title: 'التصفية',
+      brand: 'الماركة',
+      price: 'نطاق السعر',
+      size: 'المقاس',
+      category: 'الفئة',
+      clear: 'مسح الفلاتر',
+      apply: 'تطبيق',
+    },
+    no_results: 'لا توجد منتجات تطابق الفلاتر المحددة',
+    reviews: 'تقييم',
+  },
+
+  // Special Offer Section
+  offer: {
+    title: 'تشكيلة الصيف الجديدة',
+    desc: 'احصل على خصم يصل إلى',
+    desc_2: 'على منتجات مختارة لفترة محدودة.',
+    cta: 'استكشف العروض',
+    discount: '40%',
+  },
+
+  // Features
+  features: {
+    shipping_title: 'توصيل مجاني وسريع',
+    shipping_desc: 'للطلبات التي تزيد عن 200$ داخل المنطقة.',
+    returns_title: 'إرجاع مجاني 30 يوم',
+    returns_desc: 'استبدال أو إرجاع بدون أي أسئلة معقدة.',
+    quality_title: 'ضمان الجودة 100%',
+    quality_desc: 'منتجات أصلية معتمدة من الوكلاء الرسميين.',
+    support_title: 'دعم فني 24/7',
+    support_desc: 'فريقنا متواجد دائماً للرد على استفساراتك.',
+  },
+
+  // Cart
+  cart: {
+    title: 'سلة التسوق',
+    empty: 'سلتك فارغة',
+    empty_sub: 'ابدأ التسوق وأضف بعض الأحذية الرائعة!',
+    subtotal: 'المجموع الجزئي',
+    shipping: 'الشحن',
+    free_shipping: 'شحن مجاني',
+    total: 'الإجمالي',
+    checkout: 'إتمام الشراء',
+    continue_shopping: 'متابعة التسوق',
+    remove: 'إزالة',
+    coupon_placeholder: 'كود الخصم',
+    apply_coupon: 'تطبيق',
+    coupon_applied: 'تم تطبيق الكوبون!',
+    invalid_coupon: 'كود الخصم غير صالح',
+    item: 'منتج',
+    items: 'منتجات',
+  },
+
+  // Checkout
+  checkout: {
+    title: 'إتمام الطلب',
+    step_info: 'معلومات التوصيل',
+    step_payment: 'طريقة الدفع',
+    step_confirm: 'تأكيد الطلب',
+    first_name: 'الاسم الأول',
+    last_name: 'اسم العائلة',
+    email: 'البريد الإلكتروني',
+    phone: 'رقم الهاتف',
+    address: 'العنوان',
+    city: 'المدينة',
+    country: 'البلد',
+    place_order: 'تأكيد الطلب',
+    order_success: 'تم تأكيد طلبك!',
+    order_number: 'رقم الطلب',
+  },
+
+  // Wishlist
+  wishlist: {
+    title: 'المفضلة',
+    empty: 'قائمة المفضلة فارغة',
+    empty_sub: 'أضف الأحذية التي تعجبك لمتابعتها لاحقاً.',
+  },
+
+  // Toast notifications
+  toast: {
+    added_cart: 'تمت إضافة المنتج إلى السلة',
+    removed_cart: 'تمت إزالة المنتج من السلة',
+    added_wishlist: 'تمت الإضافة إلى المفضلة',
+    removed_wishlist: 'تمت الإزالة من المفضلة',
+    error: 'حدث خطأ، يرجى المحاولة مجدداً',
+    copied: 'تم النسخ!',
+    subscribed: 'تم الاشتراك بنجاح!',
+  },
+
+  // Footer
+  footer: {
+    brand_desc: 'وجهتك الأولى لأرقى وأحدث الأحذية الرياضية. نقدم لك مزيجاً بين الأداء الرياضي العالي والأناقة العصرية.',
+    shop: 'التسوق',
+    customer_service: 'خدمة العملاء',
+    newsletter: 'كن على اطلاع دائم',
+    newsletter_desc: 'اشترك للحصول على أحدث الإصدارات وخصم 10% على طلبك الأول.',
+    newsletter_placeholder: 'البريد الإلكتروني',
+    subscribe: 'اشتراك',
+    rights: 'جميع الحقوق محفوظة.',
+    shop_links: {
+      running: 'أحذية الجري',
+      basketball: 'كرة السلة',
+      training: 'تدريب وأوزان',
+      lifestyle: 'لايف ستايل',
+      sale: 'عروض التصفية',
+    },
+    service_links: {
+      track: 'تتبع الطلب',
+      returns: 'سياسة الاسترجاع',
+      size_guide: 'دليل المقاسات',
+      faq: 'الأسئلة الشائعة',
+      contact: 'اتصل بنا',
+    },
+  },
+
+  // Common
+  common: {
+    loading: 'جارٍ التحميل...',
+    error: 'خطأ',
+    try_again: 'حاول مجدداً',
+    close: 'إغلاق',
+    back: 'رجوع',
+    next: 'التالي',
+    previous: 'السابق',
+    save: 'حفظ',
+    cancel: 'إلغاء',
+    confirm: 'تأكيد',
+    search: 'بحث',
+    no_results: 'لا توجد نتائج',
+    currency: '$',
+    lang_switch: 'English',
+    brand_name: 'أسترو',
+    page_not_found: 'الصفحة غير موجودة',
+    go_home: 'الذهاب للرئيسية',
+  },
+}

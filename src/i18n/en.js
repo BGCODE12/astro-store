@@ -1,0 +1,209 @@
+export default {
+  // Navigation
+  nav: {
+    home: 'Home',
+    men: 'Men',
+    women: 'Women',
+    running: 'Running',
+    deals: 'Deals',
+    products: 'Products',
+    wishlist: 'Wishlist',
+    cart: 'Cart',
+    login: 'Login',
+    logout: 'Logout',
+    account: 'My Account',
+    search: 'Search...',
+  },
+
+  // Hero Section
+  hero: {
+    badge: 'New Release 2026',
+    title_1: 'Push Your Limits With',
+    title_2: 'Astro Phantom X',
+    desc: 'Experience a new dimension of speed and comfort. Phantom X is engineered with nano-tech to deliver unmatched support during intense runs and training sessions.',
+    cta_shop: 'Shop Now',
+    cta_video: 'Watch Video',
+    stat_customers: 'Happy Customers',
+    stat_branches: 'Global Branches',
+    stat_rating: 'Rating',
+    badge_weight: 'Lightweight 240g',
+    badge_airflow: 'Dynamic Airflow',
+  },
+
+  // Brands
+  brands: {
+    title: 'Our Trusted Brands',
+  },
+
+  // Products
+  products: {
+    trending: 'Best',
+    trending_accent: 'Sellers',
+    trending_sub: 'Our curated selection of top-performing and best-designed shoes.',
+    view_all: 'View All',
+    view_all_mobile: 'View All Products',
+    add_to_cart: 'Add to Cart',
+    add_to_wishlist: 'Add to Wishlist',
+    quick_view: 'Quick View',
+    out_of_stock: 'Out of Stock',
+    in_stock: 'In Stock',
+    select_size: 'Select Size',
+    select_color: 'Select Color',
+    quantity: 'Quantity',
+    category: {
+      running: 'Running',
+      training: 'Training',
+      lifestyle: 'Lifestyle',
+      basketball: 'Basketball',
+      football: 'Football',
+    },
+    badge: {
+      new: 'New',
+      sale: 'Sale',
+      hot: 'Hot',
+    },
+    sort: {
+      label: 'Sort by',
+      newest: 'Newest',
+      price_asc: 'Price: Low to High',
+      price_desc: 'Price: High to Low',
+      rating: 'Rating',
+      popular: 'Most Popular',
+    },
+    filter: {
+      title: 'Filter',
+      brand: 'Brand',
+      price: 'Price Range',
+      size: 'Size',
+      category: 'Category',
+      clear: 'Clear Filters',
+      apply: 'Apply',
+    },
+    no_results: 'No products match the selected filters',
+    reviews: 'reviews',
+  },
+
+  // Special Offer Section
+  offer: {
+    title: 'New Summer Collection',
+    desc: 'Get up to',
+    desc_2: 'off on selected products for a limited time.',
+    cta: 'Explore Deals',
+    discount: '40%',
+  },
+
+  // Features
+  features: {
+    shipping_title: 'Free Fast Delivery',
+    shipping_desc: 'On orders over $200 within the region.',
+    returns_title: '30-Day Free Returns',
+    returns_desc: 'Exchange or return without any hassle.',
+    quality_title: '100% Quality Guarantee',
+    quality_desc: 'Genuine products certified by official dealers.',
+    support_title: '24/7 Support',
+    support_desc: 'Our team is always available to answer your queries.',
+  },
+
+  // Cart
+  cart: {
+    title: 'Shopping Cart',
+    empty: 'Your cart is empty',
+    empty_sub: 'Start shopping and add some amazing shoes!',
+    subtotal: 'Subtotal',
+    shipping: 'Shipping',
+    free_shipping: 'Free Shipping',
+    total: 'Total',
+    checkout: 'Checkout',
+    continue_shopping: 'Continue Shopping',
+    remove: 'Remove',
+    coupon_placeholder: 'Discount Code',
+    apply_coupon: 'Apply',
+    coupon_applied: 'Coupon applied!',
+    invalid_coupon: 'Invalid coupon code',
+    item: 'item',
+    items: 'items',
+  },
+
+  // Checkout
+  checkout: {
+    title: 'Checkout',
+    step_info: 'Shipping Info',
+    step_payment: 'Payment',
+    step_confirm: 'Confirmation',
+    first_name: 'First Name',
+    last_name: 'Last Name',
+    email: 'Email Address',
+    phone: 'Phone Number',
+    address: 'Address',
+    city: 'City',
+    country: 'Country',
+    place_order: 'Place Order',
+    order_success: 'Order Confirmed!',
+    order_number: 'Order Number',
+  },
+
+  // Wishlist
+  wishlist: {
+    title: 'Wishlist',
+    empty: 'Your wishlist is empty',
+    empty_sub: 'Add shoes you love to track them later.',
+  },
+
+  // Toast notifications
+  toast: {
+    added_cart: 'Product added to cart',
+    removed_cart: 'Product removed from cart',
+    added_wishlist: 'Added to wishlist',
+    removed_wishlist: 'Removed from wishlist',
+    error: 'An error occurred. Please try again.',
+    copied: 'Copied!',
+    subscribed: 'Successfully subscribed!',
+  },
+
+  // Footer
+  footer: {
+    brand_desc: 'Your premier destination for the finest and latest sports shoes. We offer a perfect blend of high athletic performance and modern style.',
+    shop: 'Shop',
+    customer_service: 'Customer Service',
+    newsletter: 'Stay Updated',
+    newsletter_desc: 'Subscribe for the latest releases and 10% off your first order.',
+    newsletter_placeholder: 'Email Address',
+    subscribe: 'Subscribe',
+    rights: 'All rights reserved.',
+    shop_links: {
+      running: 'Running Shoes',
+      basketball: 'Basketball',
+      training: 'Training & Weights',
+      lifestyle: 'Lifestyle',
+      sale: 'Sale',
+    },
+    service_links: {
+      track: 'Track Order',
+      returns: 'Return Policy',
+      size_guide: 'Size Guide',
+      faq: 'FAQ',
+      contact: 'Contact Us',
+    },
+  },
+
+  // Common
+  common: {
+    loading: 'Loading...',
+    error: 'Error',
+    try_again: 'Try Again',
+    close: 'Close',
+    back: 'Back',
+    next: 'Next',
+    previous: 'Previous',
+    save: 'Save',
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+    search: 'Search',
+    no_results: 'No results found',
+    currency: '$',
+    lang_switch: 'العربية',
+    brand_name: 'Astro',
+    page_not_found: 'Page Not Found',
+    go_home: 'Go Home',
+  },
+}
