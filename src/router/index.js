@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   {
@@ -32,7 +32,6 @@ const routes = [
     component: () => import('../views/CheckoutView.vue'),
     meta: { title: 'الدفع | Checkout' },
     beforeEnter: (to, from, next) => {
-      // Guard: ensure cart has items (dynamic import to avoid circular deps)
       import('../stores/useCartStore.js').then(({ useCartStore }) => {
         const cartStore = useCartStore()
         if (cartStore.isEmpty) {
@@ -58,7 +57,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // Using Hash History ensures 100% fail-proof routing on GitHub Pages static hosting
+  history: createWebHashHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition
