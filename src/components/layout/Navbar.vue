@@ -76,6 +76,12 @@
 
         <!-- Mobile Right Actions -->
         <div class="md:hidden flex items-center gap-2">
+          <!-- Wishlist Mobile -->
+          <RouterLink to="/wishlist" class="btn-icon relative">
+            <i class="fa-regular fa-heart text-sm"></i>
+            <span v-if="wishlistStore.count > 0" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">{{ wishlistStore.count }}</span>
+          </RouterLink>
+
           <!-- Cart Button Mobile -->
           <button class="btn-icon relative" @click="cartStore.toggleCart()">
             <i class="fa-solid fa-bag-shopping text-sm"></i>
@@ -102,22 +108,21 @@
     <Transition name="slide-mobile">
       <div
         v-if="uiStore.isMobileMenuOpen"
-        class="md:hidden absolute w-full bg-dark-card/95 backdrop-blur-xl border-b border-dark-border shadow-2xl"
+        class="md:hidden absolute top-20 left-0 right-0 w-full bg-dark-card/95 backdrop-blur-xl border-b border-dark-border shadow-2xl z-50"
       >
-        <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
-          <RouterLink
+        <div class="max-w-7xl mx-auto px-4 py-4 space-y-2">
+          <button
             v-for="link in navLinks"
             :key="link.name"
-            :to="link.path"
-            class="flex items-center justify-between px-4 py-3 rounded-xl font-semibold transition-colors"
+            class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-semibold transition-colors text-start cursor-pointer active:scale-98"
             :class="$route.path === link.path
-              ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20'
-              : 'text-gray-400 hover:bg-dark-hover hover:text-white'"
-            @click="uiStore.closeMobileMenu()"
+              ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20 font-bold'
+              : 'text-gray-300 hover:bg-dark-hover hover:text-white'"
+            @click="navigateMobile(link.path)"
           >
             <span>{{ t(link.label) }}</span>
             <i v-if="$route.path === link.path" class="fa-solid fa-chevron-left rtl:fa-chevron-right text-brand-500 text-xs"></i>
-          </RouterLink>
+          </button>
 
           <!-- Mobile bottom actions row -->
           <div class="flex items-center gap-3 pt-3 border-t border-dark-border mt-3">
@@ -138,12 +143,14 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useUiStore } from '../../stores/useUiStore.js'
 import { useCartStore } from '../../stores/useCartStore.js'
 import { useWishlistStore } from '../../stores/useWishlistStore.js'
 
 const { t } = useI18n()
+const router = useRouter()
 const uiStore = useUiStore()
 const cartStore = useCartStore()
 const wishlistStore = useWishlistStore()
@@ -156,6 +163,11 @@ const navLinks = [
   { name: 'wishlist', path: '/wishlist', label: 'nav.wishlist' },
   { name: 'deals', path: '/products?sort=price_asc', label: 'nav.deals', badge: true },
 ]
+
+function navigateMobile(path) {
+  uiStore.closeMobileMenu()
+  router.push(path)
+}
 
 function handleScroll() {
   isScrolled.value = window.scrollY > 50
