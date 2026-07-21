@@ -5,7 +5,8 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: './', // Ensures relative asset paths work on GitHub Pages
+  // Exact repository base path for GitHub Pages to fix asset resolution on mobile devices
+  base: '/astro-store/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

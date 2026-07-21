@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <script>
-    // GitHub Pages SPA Redirect Trick
-    // Redirects 404 queries to index.html with route path
-    var pathSegmentsToKeep = 0;
+    // GitHub Pages SPA Redirect Trick for Repository Pages (/astro-store/)
+    var pathSegmentsToKeep = 1;
     var l = window.location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
