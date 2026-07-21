@@ -12,6 +12,7 @@ export default {
     login: 'تسجيل الدخول',
     logout: 'تسجيل الخروج',
     account: 'حسابي',
+    admin: 'لوحة التحكم',
     search: 'البحث...',
   },
 
@@ -147,6 +148,39 @@ export default {
     title: 'المفضلة',
     empty: 'قائمة المفضلة فارغة',
     empty_sub: 'أضف الأحذية التي تعجبك لمتابعتها لاحقاً.',
+  },
+
+  // Admin Dashboard
+  admin: {
+    title: 'لوحة تحكم الأدمن',
+    passcode_title: 'رمز الدخول السري',
+    passcode_desc: 'أدخل الرمز السري المخصص للوصول إلى لوحة التحكم والإحصائيات.',
+    passcode_placeholder: 'أدخل الرمز (مثال: astro2026)',
+    enter: 'دخول الأدمن',
+    invalid_passcode: 'الرمز السري غير صحيح!',
+    logout: 'تسجيل خروج الأدمن',
+    overview: 'نظرة عامة والإحصائيات',
+    manage_products: 'إدارة المنتجات',
+    orders: 'الطلبات',
+    stats: {
+      total_sales: 'إجمالي المبيعات',
+      total_orders: 'عدد الطلبات',
+      total_products: 'عدد المنتجات',
+      total_customers: 'إجمالي العملاء',
+    },
+    add_product: 'إضافة حذاء جديد',
+    edit_product: 'تعديل الحذاء',
+    delete_product: 'حذف الحذاء',
+    confirm_delete: 'هل أنت تأكد من رغبتك في حذف هذا المنتج؟',
+    product_name_ar: 'الاسم بالعربية',
+    product_name_en: 'الاسم بالإنجليزي',
+    price: 'السعر ($)',
+    brand: 'الماركة',
+    category: 'التصنيف',
+    stock: 'المخزون المتوفر',
+    actions: 'الإجراءات',
+    save_success: 'تم حفظ بيانات المنتج بنجاح!',
+    delete_success: 'تم حذف المنتج بنجاح!',
   },
 
   // Toast notifications

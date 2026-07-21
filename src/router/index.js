@@ -49,6 +49,28 @@ const routes = [
     meta: { title: 'المفضلة | Wishlist' },
   },
   {
+    path: '/admin/login',
+    name: 'AdminLogin',
+    component: () => import('../views/admin/AdminLoginView.vue'),
+    meta: { title: 'تسجيل دخول الأدمن | Admin Passcode' },
+  },
+  {
+    path: '/admin',
+    name: 'AdminDashboard',
+    component: () => import('../views/admin/AdminDashboardView.vue'),
+    meta: { title: 'لوحة تحكم الأدمن | Admin Dashboard' },
+    beforeEnter: (to, from, next) => {
+      import('../stores/useAuthStore.js').then(({ useAuthStore }) => {
+        const authStore = useAuthStore()
+        if (!authStore.isAdminAuthenticated) {
+          next({ name: 'AdminLogin' })
+        } else {
+          next()
+        }
+      })
+    },
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('../views/NotFoundView.vue'),
@@ -57,7 +79,6 @@ const routes = [
 ]
 
 const router = createRouter({
-  // Using Hash History ensures 100% fail-proof routing on GitHub Pages static hosting
   history: createWebHashHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
@@ -69,7 +90,6 @@ const router = createRouter({
   },
 })
 
-// Global navigation guard - Update document title
 router.beforeEach((to, from, next) => {
   const title = to.meta?.title
   if (title) document.title = title

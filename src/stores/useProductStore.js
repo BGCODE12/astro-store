@@ -70,7 +70,6 @@ export const useProductStore = defineStore('products', () => {
     error.value = null
     try {
       currentProduct.value = await productService.getProduct(id)
-      // Also load related
       relatedProducts.value = await productService.getRelated(
         currentProduct.value.id,
         currentProduct.value.category
@@ -80,6 +79,47 @@ export const useProductStore = defineStore('products', () => {
       console.error('[ProductStore] fetchProduct error:', err)
     } finally {
       isLoadingProduct.value = false
+    }
+  }
+
+  async function addProduct(productData) {
+    isLoading.value = true
+    try {
+      const created = await productService.addProduct(productData)
+      await fetchProducts()
+      return created
+    } catch (err) {
+      console.error('[ProductStore] addProduct error:', err)
+      throw err
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  async function updateProduct(id, updatedData) {
+    isLoading.value = true
+    try {
+      const updated = await productService.updateProduct(id, updatedData)
+      await fetchProducts()
+      return updated
+    } catch (err) {
+      console.error('[ProductStore] updateProduct error:', err)
+      throw err
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  async function deleteProduct(id) {
+    isLoading.value = true
+    try {
+      await productService.deleteProduct(id)
+      await fetchProducts()
+    } catch (err) {
+      console.error('[ProductStore] deleteProduct error:', err)
+      throw err
+    } finally {
+      isLoading.value = false
     }
   }
 
@@ -125,6 +165,9 @@ export const useProductStore = defineStore('products', () => {
     fetchFeatured,
     fetchTrending,
     fetchProduct,
+    addProduct,
+    updateProduct,
+    deleteProduct,
     setFilter,
     resetFilters,
     openQuickView,

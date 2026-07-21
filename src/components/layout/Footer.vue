@@ -106,9 +106,14 @@
       </div>
 
       <div class="border-t border-dark-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-gray-500 font-semibold text-xs text-center md:text-start">
-          &copy; {{ new Date().getFullYear() }} {{ t('common.brand_name') }}. {{ t('footer.rights') }}
-        </p>
+        <div class="flex flex-col md:flex-row items-center gap-4 text-xs font-semibold text-gray-500">
+          <p>&copy; {{ new Date().getFullYear() }} {{ t('common.brand_name') }}. {{ t('footer.rights') }}</p>
+          <span class="hidden md:inline">•</span>
+          <RouterLink to="/admin" class="hover:text-brand-500 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-lock text-[10px]"></i>
+            <span>{{ t('nav.admin') }}</span>
+          </RouterLink>
+        </div>
         <div class="flex items-center gap-4 text-2xl text-gray-600">
           <i class="fa-brands fa-cc-visa hover:text-white transition-colors cursor-pointer" title="Visa"></i>
           <i class="fa-brands fa-cc-mastercard hover:text-white transition-colors cursor-pointer" title="MasterCard"></i>

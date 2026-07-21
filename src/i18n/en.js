@@ -12,6 +12,7 @@ export default {
     login: 'Login',
     logout: 'Logout',
     account: 'My Account',
+    admin: 'Admin Panel',
     search: 'Search...',
   },
 
@@ -147,6 +148,39 @@ export default {
     title: 'Wishlist',
     empty: 'Your wishlist is empty',
     empty_sub: 'Add shoes you love to track them later.',
+  },
+
+  // Admin Dashboard
+  admin: {
+    title: 'Admin Dashboard',
+    passcode_title: 'Secret Access Code',
+    passcode_desc: 'Enter your secret passcode to access the admin panel and analytics.',
+    passcode_placeholder: 'Enter code (e.g. astro2026)',
+    enter: 'Admin Access',
+    invalid_passcode: 'Invalid passcode!',
+    logout: 'Logout Admin',
+    overview: 'Overview & Statistics',
+    manage_products: 'Product Management',
+    orders: 'Orders',
+    stats: {
+      total_sales: 'Total Revenue',
+      total_orders: 'Total Orders',
+      total_products: 'Total Products',
+      total_customers: 'Total Customers',
+    },
+    add_product: 'Add New Shoe',
+    edit_product: 'Edit Shoe',
+    delete_product: 'Delete Shoe',
+    confirm_delete: 'Are you sure you want to delete this product?',
+    product_name_ar: 'Arabic Name',
+    product_name_en: 'English Name',
+    price: 'Price ($)',
+    brand: 'Brand',
+    category: 'Category',
+    stock: 'Stock Count',
+    actions: 'Actions',
+    save_success: 'Product saved successfully!',
+    delete_success: 'Product deleted successfully!',
   },
 
   // Toast notifications

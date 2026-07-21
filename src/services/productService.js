@@ -1,11 +1,30 @@
 import api from './api.js'
 import PRODUCTS from './mockData.js'
 
-// =======================================================
-// SIMPLE IN-MEMORY CACHE
-// =======================================================
+// Simple LocalStorage persistence for admin modifications
+const CUSTOM_PRODUCTS_KEY = 'astro_custom_products'
+
+function getStoredProducts() {
+  try {
+    const raw = localStorage.getItem(CUSTOM_PRODUCTS_KEY)
+    return raw ? JSON.parse(raw) : PRODUCTS
+  } catch {
+    return PRODUCTS
+  }
+}
+
+function saveStoredProducts(list) {
+  try {
+    localStorage.setItem(CUSTOM_PRODUCTS_KEY, JSON.stringify(list))
+  } catch (e) {
+    console.warn('Failed to save products:', e)
+  }
+}
+
+let activeProducts = getStoredProducts()
+
 const cache = new Map()
-const CACHE_TTL = 5 * 60 * 1000 // 5 minutes
+const CACHE_TTL = 5 * 60 * 1000
 
 function getCached(key) {
   const entry = cache.get(key)
@@ -21,54 +40,34 @@ function setCache(key, data) {
   cache.set(key, { data, timestamp: Date.now() })
 }
 
-// =======================================================
-// MOCK DELAY SIMULATOR (mimics network latency)
-// =======================================================
-function delay(ms = 600) {
+function clearCache() {
+  cache.clear()
+}
+
+function delay(ms = 400) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-// =======================================================
-// PRODUCT SERVICE
-// =======================================================
 export const productService = {
-
-  /**
-   * Fetch all products (with optional filters)
-   */
   async getProducts(filters = {}) {
-    const cacheKey = `products:${JSON.stringify(filters)}`
-    const cached = getCached(cacheKey)
-    if (cached) return cached
+    await delay(300)
+    let results = [...activeProducts]
 
-    await delay(700)
-
-    let results = [...PRODUCTS]
-
-    // Filter by category
     if (filters.category && filters.category !== 'all') {
       results = results.filter(p => p.category === filters.category)
     }
-
-    // Filter by brand
     if (filters.brand && filters.brand.length) {
       results = results.filter(p => filters.brand.includes(p.brand))
     }
-
-    // Filter by price range
     if (filters.minPrice !== undefined) {
       results = results.filter(p => p.price >= filters.minPrice)
     }
     if (filters.maxPrice !== undefined) {
       results = results.filter(p => p.price <= filters.maxPrice)
     }
-
-    // Filter by size
     if (filters.size) {
       results = results.filter(p => p.sizes.includes(filters.size))
     }
-
-    // Search query
     if (filters.query) {
       const q = filters.query.toLowerCase()
       results = results.filter(p =>
@@ -79,7 +78,6 @@ export const productService = {
       )
     }
 
-    // Sort
     switch (filters.sort) {
       case 'price_asc':
         results.sort((a, b) => a.price - b.price)
@@ -95,88 +93,97 @@ export const productService = {
         break
       case 'newest':
       default:
-        results.sort((a, b) => a.id - b.id)
+        results.sort((a, b) => b.id - a.id)
     }
 
-    setCache(cacheKey, results)
     return results
   },
 
-  /**
-   * Fetch a single product by ID
-   */
   async getProduct(id) {
-    const cacheKey = `product:${id}`
-    const cached = getCached(cacheKey)
-    if (cached) return cached
-
-    await delay(500)
-    const product = PRODUCTS.find(p => p.id === Number(id))
+    await delay(300)
+    const product = activeProducts.find(p => p.id === Number(id))
     if (!product) throw new Error(`Product ${id} not found`)
-
-    setCache(cacheKey, product)
     return product
   },
 
-  /**
-   * Fetch featured products for Hero/Home page
-   */
   async getFeaturedProducts() {
-    const cacheKey = 'products:featured'
-    const cached = getCached(cacheKey)
-    if (cached) return cached
-
-    await delay(500)
-    const featured = PRODUCTS.filter(p => p.isFeatured)
-    setCache(cacheKey, featured)
-    return featured
+    await delay(300)
+    return activeProducts.filter(p => p.isFeatured)
   },
 
-  /**
-   * Fetch trending/best-seller products
-   */
   async getTrending() {
-    const cacheKey = 'products:trending'
-    const cached = getCached(cacheKey)
-    if (cached) return cached
-
-    await delay(400)
-    const trending = [...PRODUCTS]
+    await delay(300)
+    return [...activeProducts]
       .sort((a, b) => b.reviewCount - a.reviewCount)
       .slice(0, 4)
-    setCache(cacheKey, trending)
-    return trending
   },
 
-  /**
-   * Fetch related products (same category, exclude current)
-   */
   async getRelated(productId, category) {
-    await delay(400)
-    return PRODUCTS
+    await delay(300)
+    return activeProducts
       .filter(p => p.category === category && p.id !== productId)
       .slice(0, 4)
   },
 
-  /**
-   * Simulate subscribe to newsletter
-   */
-  async subscribeNewsletter(email) {
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      throw new Error('Invalid email address')
+  async addProduct(newProduct) {
+    await delay(400)
+    const id = Date.now()
+    const product = {
+      id,
+      rating: 5.0,
+      reviewCount: 1,
+      badge: 'new',
+      sizes: newProduct.sizes || [40, 41, 42, 43],
+      colors: newProduct.colors || ['#111111', '#ff6633'],
+      images: [newProduct.image],
+      description_ar: newProduct.description_ar || newProduct.name_ar,
+      description_en: newProduct.description_en || newProduct.name_en,
+      features_ar: ['خفيف الوزن', 'جودة عالية'],
+      features_en: ['Lightweight', 'Premium Quality'],
+      isFeatured: true,
+      ...newProduct,
+      price: Number(newProduct.price),
+      stock: Number(newProduct.stock || 10),
     }
-    await delay(800)
+    activeProducts.unshift(product)
+    saveStoredProducts(activeProducts)
+    clearCache()
+    return product
+  },
+
+  async updateProduct(id, updatedData) {
+    await delay(400)
+    const index = activeProducts.findIndex(p => p.id === Number(id))
+    if (index !== -1) {
+      activeProducts[index] = {
+        ...activeProducts[index],
+        ...updatedData,
+        price: Number(updatedData.price),
+        stock: Number(updatedData.stock),
+      }
+      saveStoredProducts(activeProducts)
+      clearCache()
+      return activeProducts[index]
+    }
+    throw new Error('Product not found')
+  },
+
+  async deleteProduct(id) {
+    await delay(400)
+    activeProducts = activeProducts.filter(p => p.id !== Number(id))
+    saveStoredProducts(activeProducts)
+    clearCache()
+    return true
+  },
+
+  async subscribeNewsletter(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) throw new Error('Invalid email address')
+    await delay(400)
     return { success: true, email }
   },
 
-  /**
-   * Clear cache (for dev/debug)
-   */
-  clearCache() {
-    cache.clear()
-  },
+  clearCache,
 }
 
 export default productService
